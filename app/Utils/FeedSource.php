@@ -3,6 +3,7 @@
 namespace App\Utils;
 
 use Zend\Feed\Reader\Reader;
+use GuzzleHttp\Exception\RequestException;
 use Zend\Feed\Reader\Exception\RuntimeException;
 use Zend\Feed\Reader\Feed\AbstractFeed;
 
@@ -38,7 +39,7 @@ class FeedSource
         try {
             $this->import();
             return true;
-        } catch (RuntimeException $e) {
+        } catch (RuntimeException | RequestException $e) {
             return false;
         }
     }

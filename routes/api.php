@@ -1,22 +1,13 @@
 <?php
 
 use Illuminate\Http\Request;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+use App\Http\Requests\CheckStatusRequest;
 
 Route::get('feeds/parse', 'FeedController@parse');
 Route::get('feeds/export', 'FeedController@export');
 Route::resource('feeds', 'FeedController');
+
+Route::post('check-status', function (CheckStatusRequest $request)
+{
+    Artisan::call('feeds:check_all_status');
+});

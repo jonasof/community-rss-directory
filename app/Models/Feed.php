@@ -18,14 +18,22 @@ class Feed extends Model implements Auditable
         'title',
         'description',
         'tags',
-        'status',
         'homepage',
         'type'
     ];
 
-    public function feedStatuses()
+    protected $appends = [
+        'status'
+    ];
+
+    public function statuses()
     {
         return $this->hasMany(FeedStatus::class);
+    }
+
+    public function lastStatus()
+    {
+        return $this->hasOne(FeedStatus::class)->orderBy('id', 'desc');
     }
 
     public function setTagsAttribute($tags)
@@ -37,6 +45,11 @@ class Feed extends Model implements Auditable
         $this->saved(function () use ($tags) {
             $this->retag($tags);
         });
+    }
+
+    public function getStatusAttribute(): bool
+    {
+        return $this->lastStatus->online ?? true;
     }
 
     public static function getSearchQuery($tag)

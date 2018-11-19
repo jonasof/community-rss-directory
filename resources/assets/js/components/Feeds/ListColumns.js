@@ -21,6 +21,10 @@ export default {
     label: 'Type <select class="column_search"><option value="" default>All</option><option value="rss">RSS</option><option value="podcast">Podcast</option></select>',
     sortable: false
   },
+  status: {
+    label: 'Online',
+    template: '{{ data ? "yes" : "no" }}'
+  },
   created_at: {
     label: 'Created At',
     render: (data) => (new Date(data)).toLocaleDateString()
