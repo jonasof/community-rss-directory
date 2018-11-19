@@ -13,7 +13,8 @@ class FeedTest extends TestCase
         $response = $this->json('POST', '/api/feeds', [
             "url" => "http://feeds.folha.uol.com.br/rss091.xml",
             "title" => "Testing",
-            "description" => "TestingDb"
+            "description" => "TestingDb",
+            "type" => "rss"
         ]);
 
         $response->assertStatus(201);
@@ -30,7 +31,8 @@ class FeedTest extends TestCase
         $response = $this->json('POST', '/api/feeds', [
             "url" => "http://lala.com",
             "title" => "Testing",
-            "description" => "TestingDb"
+            "description" => "TestingDb",
+            "type" => "rss"
         ]);
 
         $response->assertStatus(422);
@@ -43,7 +45,22 @@ class FeedTest extends TestCase
         $response = $this->json('POST', '/api/feeds', [
             "url" => "http://lala.com",
             "title" => "",
-            "description" => "TestingDb"
+            "description" => "TestingDb",
+            "type" => "rss"
+        ]);
+
+        $response->assertStatus(422);
+    }
+
+    public function testTypePresence()
+    {
+        $this->mockValidFeedSource();
+
+        $response = $this->json('POST', '/api/feeds', [
+            "url" => "http://lala.com",
+            "title" => "Testing",
+            "description" => "TestingDb",
+            "type" => ""
         ]);
 
         $response->assertStatus(422);

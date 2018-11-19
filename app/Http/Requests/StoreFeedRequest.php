@@ -13,11 +13,6 @@ class StoreFeedRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
@@ -27,7 +22,8 @@ class StoreFeedRequest extends FormRequest
                 new ValidFeed,
                 Rule::unique('feeds')->ignore($this->id)
             ],
-            'title' => 'required'
+            'title' => 'required',
+            'type' => 'required'
         ];
     }
 }
