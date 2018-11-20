@@ -10,17 +10,20 @@
       :fields="datatables.fields",
       :opts="datatables.options"
       class-name="table table-striped table-bordered w-100"
+      @preview="preview"
     )
+    previewModal(ref='preview')
 
 </template>
 
 <script>
   import ListColumns from "./ListColumns"
   import VdtnetTable from 'vue-datatables-net'
+  import PreviewModal from './PreviewModal'
 
   export default {
     props: ['tag'],
-    components: { VdtnetTable: VdtnetTable },
+    components: { VdtnetTable, PreviewModal },
     data () {
       return {
         datatables: {
@@ -51,6 +54,11 @@
           .draw();
       });
     },
+    methods: {
+      preview (data) {
+        this.$refs.preview.show(`/api/feeds/${data.id}/download`)
+      }
+    },
     watch: {
       tag () {
         this.$refs.table.dataTable.ajax.reload()
@@ -60,7 +68,16 @@
 </script>
 
 <style lang="scss" scoped>
-  table {
+  .vdtnet-container {
     width: 100% !important;
+  }
+
+  .vdtnet-container /deep/ .action {
+    white-space: nowrap;
+    letter-spacing: 18px;
+
+    a {
+      font-size: 18px;
+    }
   }
 </style>

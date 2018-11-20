@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CheckStatusRequest;
 
 Route::get('feeds/parse', 'FeedController@parse');
 Route::get('feeds/export', 'FeedController@export');
+Route::get('feeds/{id}/download', 'FeedController@download');
 Route::resource('feeds', 'FeedController');
 
 Route::post('check-status', function (CheckStatusRequest $request)

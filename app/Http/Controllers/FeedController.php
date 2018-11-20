@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Feed;
 use App\Http\Requests\StoreFeedRequest;
 use App\Utils\{FeedSource, Exporter};
+use Cache;
 
 class FeedController extends Controller
 {
@@ -54,5 +55,16 @@ class FeedController extends Controller
             $exporter = new Exporter();
             echo $exporter->export(Feed::all());
         }, 'response.opml');
+    }
+
+    public function download(int $id)
+    {
+        $feed = Feed::findOrFail($id);
+
+        $minutes = 10;
+
+        return Cache::remember("feed_$id", $minutes, function () use ($feed) {
+            return (new FeedSource($feed->url))->download();
+        });
     }
 }

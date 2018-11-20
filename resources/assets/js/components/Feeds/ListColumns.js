@@ -1,11 +1,6 @@
 export default {
-  id: {
-    label: 'Id',
-    render: (data, type, row) => `<a href='#/edit/${data}'>${data}</a>`
-  },
   title: {
-    label: 'Title',
-    render: (data, type, row) => `<a href="${row.url}">${data}</a>`
+    label: 'Title'
   },
   tagged: {
     label: 'Tags',
@@ -18,7 +13,11 @@ export default {
     ).join(', ')
   },
   type: {
-    label: 'Type <select class="column_search"><option value="" default>All</option><option value="rss">RSS</option><option value="podcast">Podcast</option></select>',
+    label: `Type <select class="column_search">
+      <option value="" default>All</option>
+      <option value="rss">RSS</option>
+      <option value="podcast">Podcast</option>
+    </select>`,
     sortable: false
   },
   status: {
@@ -32,5 +31,13 @@ export default {
   updated_at: {
     label: 'Updated At',
     render: (data) => (new Date(data)).toLocaleDateString()
+  },
+  actions: {
+    label: 'Actions',
+    template: `<div class="action">
+      <a title="Preview" href="javascript:void(0);" data-action="preview"><font-awesome-icon icon="eye" /></a>
+      <a title="Feed Link" :href="row.url" target="_blank"><font-awesome-icon icon="link" /></a>
+      <a title="Edit" :href='"#/edit/" + row.id'><font-awesome-icon icon="pen" /></a>
+    </div>`
   }
 }

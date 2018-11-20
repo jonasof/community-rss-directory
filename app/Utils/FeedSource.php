@@ -44,7 +44,7 @@ class FeedSource
         }
     }
 
-    protected function download(): string
+    function download(): string
     {
         return app(FeedSourceDownloader::class)->download($this->url);
     }
