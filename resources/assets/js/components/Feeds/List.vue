@@ -80,4 +80,12 @@
       font-size: 18px;
     }
   }
+
+  .vdtnet-container /deep/ .online {
+    color: green;
+  }
+
+  .vdtnet-container /deep/ .offline {
+    color: red;
+  }
 </style>

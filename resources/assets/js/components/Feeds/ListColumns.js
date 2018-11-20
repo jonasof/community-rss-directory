@@ -22,7 +22,7 @@ export default {
   },
   status: {
     label: 'Online',
-    template: '{{ data ? "yes" : "no" }}'
+    template: '<span v-if="data" class="online">yes</span><span v-else class="offline">no</span>'
   },
   created_at: {
     label: 'Created At',
