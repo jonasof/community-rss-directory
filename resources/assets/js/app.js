@@ -1,11 +1,16 @@
 require('./bootstrap');
 import VueRouter from 'vue-router'
 import VeeValidate from 'vee-validate'
+import VueI18n from 'vue-i18n'
+
+import messages from './Messages'
+import locale from './locale'
 
 import List from './components/Feeds/List.vue'
 import Form from './components/Feeds/Form.vue'
 
 window.Vue = require('vue');
+Vue.use(VueI18n)
 Vue.use(VueRouter)
 Vue.use(VeeValidate, { fieldsBagName: 'veeFields' })
 
@@ -38,7 +43,14 @@ const router = new VueRouter({
   ]
 })
 
+const i18n = new VueI18n({
+  messages,
+  locale: locale.getCurrentLocale(),
+  fallbackLocale: 'en'
+})
+
 const app = new Vue({
   router,
+  i18n,
   el: '#app'
 });

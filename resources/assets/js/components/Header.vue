@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark na vbar-expand-lg" style="background-color: rgb(50, 52, 54)">
+  <nav class="navbar navbar-dark na vbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="#/">Community RSS Directory</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,13 +8,18 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#/">Home</a>
+              <a class="nav-link" href="#/">{{ $t('feeds.actions.homepage') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/new">New</a>
+              <a class="nav-link" href="#/new">{{ $t('feeds.actions.new') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/api/feeds/export" download>Export</a>
+              <a class="nav-link" href="/api/feeds/export" download>{{ $t('feeds.actions.export') }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <LanguageSelector></languageselector>
+              </a>
             </li>
           </ul>
         </div>
@@ -24,6 +29,7 @@
 
 <script>
   import $ from 'jquery'
+  import LanguageSelector from './LanguageSelector'
 
   export default {
     mounted () {
@@ -32,6 +38,15 @@
       el.find('.navbar-nav > li > a').on('click', () => {
         el.find('.navbar-collapse').collapse('hide');
       });
+    },
+    components: {
+      LanguageSelector
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .navbar-dark {
+    background-color: rgb(50, 52, 54)
+  }
+</style>

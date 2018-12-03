@@ -1,12 +1,9 @@
 <template lang="pug">
   div
-    h2
-      | New Feed Source
-    p.alert.alert-warning
-      | Warning: your IP address is stored when adding or editing (like wikipedia).
-      | The data are used to identify vandalism.
+    h2 {{ $t('feeds.new') }}
+    p.alert.alert-warning {{ $t('ip_registered') }}
     .form-group
-      label(for="url") Url:
+      label(for="url") {{ $t('feeds.fields.url') }}:
       input.form-control(
         id="url"
         name="url"
@@ -18,7 +15,7 @@
       .invalid-feedback {{ errors.first('url') }}
 
     .form-group
-      label(for="url") Type:
+      label(for="url") {{ $t('feeds.fields.type') }}:
       select.form-control(
         id="type"
         name="type"
@@ -32,7 +29,7 @@
       .invalid-feedback {{ errors.first('type') }}
 
     .form-group
-      label(for="homepage") Homepage:
+      label(for="homepage") {{ $t('feeds.fields.homepage') }}:
       input.form-control(
         id="homepage"
         name="homepage"
@@ -43,7 +40,7 @@
       .invalid-feedback {{ errors.first('homepage') }}
 
     .form-group
-      label(for="title") Title:
+      label(for="title") {{ $t('feeds.fields.title') }}:
       input.form-control(
         id="title"
         name="title"
@@ -54,7 +51,7 @@
       .invalid-feedback {{ errors.first('title') }}
 
     .form-group
-      label(for="description") Description:
+      label(for="description") {{ $t('feeds.fields.description') }}:
       input.form-control(
         id="description"
         name="description"
@@ -64,15 +61,15 @@
       .invalid-feedback {{ errors.first('description') }}
 
     .form-group
-      label(for="tags") Tags
+      label(for="tags") {{ $t('feeds.fields.tags') }}:
       tags-input(
         element-id="tags"
         v-model="form.tags"
         :typeahead="false"
+        placeholder=""
       )
 
-    button.btn.btn-primary(href='', @click.prevent="submit", :disabled="errors.any()")
-      | Save
+    button.btn.btn-primary(href='', @click.prevent="submit", :disabled="errors.any()") {{ $t('feeds.actions.save') }}
 </template>
 
 <script>
@@ -137,7 +134,7 @@
 
           this.errors.remove('url');
         } catch (e) {
-          this.errors.add('url', 'Fonte Inválida');
+          this.errors.add('url', this.$t('feeds.errors.invalid_source'));
         }
       }
     }

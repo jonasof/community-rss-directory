@@ -1,11 +1,12 @@
 <template lang="pug">
   div
-    h2 Feed List
+    h2 {{ $t('feeds.list') }}
     p(v-if='tag')
       | Tag: {{ tag }}
       a.btn.btn-danger.btn-sm(href="#/")
         | X
     vdtnet-table(
+      :key='tableKey'
       ref='table'
       :fields="datatables.fields",
       :opts="datatables.options"
@@ -26,7 +27,13 @@
     components: { VdtnetTable, PreviewModal },
     data () {
       return {
-        datatables: {
+        datatables: this.getDatatableOptions(),
+        tableKey: 'table'
+      }
+    },
+    methods: {
+      getDatatableOptions () {
+        return {
           options: {
             pageLength: 50,
             lengthMenu: [ 10, 25, 50, 100 ],
@@ -37,31 +44,46 @@
               url: '/api/feeds',
               data: (request) => {
                 if (this.tag) {
-                  request.tag = this.tag
+                  request.tag = this.tag;
                 }
+              }
+            },
+            initComplete: () => {
+              $(this.$refs.table.$el).on('change', ".column_search", (options) => {
+                this.$refs.table.dataTable
+                  .column( $(options.target).parent().index() )
+                  .search( options.target.value )
+                  .draw();
+              });
+            },
+            language: {
+              paginate: {
+                previous: this.$t('datatables.previous'),
+                next: this.$t('datatables.next')
               }
             }
           },
-          fields: ListColumns
-        }
-      }
-    },
-    mounted () {
-      $(this.$refs.table.$el).on('change', ".column_search", (options) => {
-        this.$refs.table.dataTable
-          .column( $(options.target).parent().index() )
-          .search( options.target.value )
-          .draw();
-      });
-    },
-    methods: {
+          fields: this.getColumns()
+        };
+      },
       preview (data) {
-        this.$refs.preview.show(`/api/feeds/${data.id}/download`)
+        this.$refs.preview.show(`/api/feeds/${data.id}/download`);
+      },
+      getColumns() {
+        return ListColumns(this.$i18n);
       }
     },
     watch: {
       tag () {
-        this.$refs.table.dataTable.ajax.reload()
+        this.$refs.table.dataTable.ajax.reload();
+      },
+      '$i18n.locale' () {
+        this.datatables = this.getDatatableOptions();
+
+        this.tableKey = 'loading';
+        this.$nextTick(() => {
+          this.tableKey = 'table';
+        })
       }
     }
   }

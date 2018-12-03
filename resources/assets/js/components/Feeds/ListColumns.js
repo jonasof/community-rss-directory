@@ -1,9 +1,9 @@
-export default {
+export default (i18n) => ({
   title: {
-    label: 'Title'
+    label: i18n.t('feeds.columns.title')
   },
   tagged: {
-    label: 'Tags',
+    label: i18n.t('feeds.columns.tags'),
     searchable: false,
     sortable: false,
     render: (data) => data.map(
@@ -13,31 +13,31 @@ export default {
     ).join(', ')
   },
   type: {
-    label: `Type <select class="column_search">
-      <option value="" default>All</option>
-      <option value="rss">RSS</option>
-      <option value="podcast">Podcast</option>
+    label: i18n.t('feeds.columns.type') + ` <select class="column_search">
+      <option value="" default>${i18n.t('feeds.types.all')}</option>
+      <option value="rss">${i18n.t('feeds.types.rss')}</option>
+      <option value="podcast">${i18n.t('feeds.types.podcast')}</option>
     </select>`,
     sortable: false
   },
   status: {
-    label: 'Online',
-    template: '<span v-if="data" class="online">yes</span><span v-else class="offline">no</span>'
+    label: i18n.t('feeds.columns.online'),
+    template: `<span v-if="data" class="online">${i18n.t('yes')}</span><span v-else class="offline">${i18n.t('no')}</span>`
   },
   created_at: {
-    label: 'Created At',
+    label: i18n.t('feeds.columns.created_at'),
     render: (data) => (new Date(data)).toLocaleDateString()
   },
   updated_at: {
-    label: 'Updated At',
+    label: i18n.t('feeds.columns.updated_at'),
     render: (data) => (new Date(data)).toLocaleDateString()
   },
   actions: {
-    label: 'Actions',
+    label: i18n.t('feeds.columns.actions'),
     template: `<div class="action">
-      <a title="Preview" href="javascript:void(0);" data-action="preview"><font-awesome-icon icon="eye" /></a>
-      <a title="Feed Link" :href="row.url" target="_blank"><font-awesome-icon icon="link" /></a>
-      <a title="Edit" :href='"#/edit/" + row.id'><font-awesome-icon icon="pen" /></a>
+      <a title="${i18n.t('feeds.actions.preview')}" href="javascript:void(0);" data-action="preview"><font-awesome-icon icon="eye" /></a>
+      <a title="${i18n.t('feeds.actions.link')}" :href="row.url" target="_blank"><font-awesome-icon icon="link" /></a>
+      <a title="${i18n.t('feeds.actions.edit')}" :href='"#/edit/" + row.id'><font-awesome-icon icon="pen" /></a>
     </div>`
   }
-}
+})
