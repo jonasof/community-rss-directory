@@ -15,11 +15,14 @@ Vue.use(VueRouter)
 Vue.use(VeeValidate, { fieldsBagName: 'veeFields' })
 
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { faLink, faPen, faEye, faSpinner } from "@fortawesome/free-solid-svg-icons"
-library.add(faPen, faLink, faEye, faSpinner)
+import { faLink, faPen, faEye, faSpinner, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
+library.add(faPen, faLink, faEye, faSpinner, faInfoCircle)
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.filter("localdatetime", date => date ? (new Date(date)).toLocaleString() : "");
+Vue.filter("localdate", date => date ? (new Date(date)).toLocaleDateString() : "");
 
 Vue.component('appheader', require('./components/Header.vue'));
 Vue.component('appfooter', require('./components/Footer.vue'));

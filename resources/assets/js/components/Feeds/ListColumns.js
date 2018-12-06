@@ -22,15 +22,24 @@ export default (i18n) => ({
   },
   status: {
     label: i18n.t('feeds.columns.online'),
-    template: `<span v-if="data" class="online">${i18n.t('yes')}</span><span v-else class="offline">${i18n.t('no')}</span>`
+    template: `
+      <span :class="data ? ['online'] : ['offline']">
+        <span v-if="data">${i18n.t('yes')}</span>
+        <span v-else>${i18n.t('no')}</span>
+
+        <span class='float-right' :title="'${i18n.t('feeds.columns.last_status_check')}: ' + $options.filters.localdatetime(row.last_status.created_at)">
+          <font-awesome-icon icon="info-circle" />
+        </span>
+      </span>
+    `
   },
   created_at: {
     label: i18n.t('feeds.columns.created_at'),
-    render: (data) => (new Date(data)).toLocaleDateString()
+    template: `{{ data | localdate }}`
   },
   updated_at: {
     label: i18n.t('feeds.columns.updated_at'),
-    render: (data) => (new Date(data)).toLocaleDateString()
+    template: `{{ data | localdate }}`
   },
   actions: {
     label: i18n.t('feeds.columns.actions'),

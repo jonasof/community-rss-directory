@@ -20,8 +20,9 @@ export default {
       tags: 'Tags',
       type: 'Tipo',
       online: 'Online',
+      last_status_check: 'Última verificação (UTC)',
       created_at: 'Criado em',
-      updated_at: 'Atualizado em',
+      updated_at: 'Editado em',
       actions: 'Ações'
     },
     actions: {

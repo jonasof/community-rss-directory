@@ -10,14 +10,14 @@ class FeedsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testGetFeedStatusInitial()
+    public function testGetStatusInitial()
     {
         $feed = factory(Feed::class)->create();
 
         $this->assertEquals(true, $feed->status);
     }
 
-    public function testGetFeedStatusWhenIsOnline()
+    public function testGetStatusWhenIsOnline()
     {
         $feed = factory(Feed::class)->create();
         $feed->statuses()->create(['online' => true]);
@@ -25,7 +25,7 @@ class FeedsTest extends TestCase
         $this->assertEquals(true, $feed->status);
     }
 
-    public function testGetFeedStatusWhenIsOffline()
+    public function testGetStatusWhenIsOffline()
     {
         $feed = factory(Feed::class)->create();
         $feed->statuses()->create(['online' => false]);
@@ -33,7 +33,7 @@ class FeedsTest extends TestCase
         $this->assertEquals(false, $feed->status);
     }
 
-    public function testGetFeedStatusWhenTurnsOffline()
+    public function testGetStatusWhenTurnsOffline()
     {
         $feed = factory(Feed::class)->create();
         $feed->statuses()->create(['online' => true]);

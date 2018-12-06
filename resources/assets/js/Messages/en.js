@@ -20,6 +20,7 @@ export default {
       tags: 'Tags',
       type: 'Type',
       online: 'Online',
+      last_status_check: 'Status checked at (UTC)',
       created_at: 'Created At',
       updated_at: 'Updated At',
       actions: 'Actions'
