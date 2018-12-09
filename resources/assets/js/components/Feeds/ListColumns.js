@@ -27,7 +27,7 @@ export default (i18n) => ({
         <span v-if="data">${i18n.t('yes')}</span>
         <span v-else>${i18n.t('no')}</span>
 
-        <span class='float-right' :title="'${i18n.t('feeds.columns.last_status_check')}: ' + $options.filters.localdatetime(row.last_status.created_at)">
+        <span class='float-right' :title="'${i18n.t('feeds.columns.last_status_check')}: ' + $options.filters.localdatetime(row.last_status && row.last_status.created_at)">
           <font-awesome-icon icon="info-circle" />
         </span>
       </span>
@@ -45,7 +45,7 @@ export default (i18n) => ({
     label: i18n.t('feeds.columns.actions'),
     template: `<div class="action">
       <a title="${i18n.t('feeds.actions.preview')}" href="javascript:void(0);" data-action="preview"><font-awesome-icon icon="eye" /></a>
-      <a title="${i18n.t('feeds.actions.link')}" :href="row.url" target="_blank"><font-awesome-icon icon="link" /></a>
+      <a title="${i18n.t('feeds.actions.link')}" href="javascript:void(0);" data-action="openFeed"><font-awesome-icon icon="link" /></a>
       <a title="${i18n.t('feeds.actions.edit')}" :href='"#/edit/" + row.id'><font-awesome-icon icon="pen" /></a>
     </div>`
   }

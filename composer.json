@@ -10,6 +10,7 @@
     }],
     "require": {
         "php": "^7.1.3",
+        "ext-gd": "*",
         "amphp/parallel": "^1.0",
         "celd/opml-import-export": "dev-update-dependencies",
         "doctrine/dbal": "^2.8",
@@ -18,6 +19,7 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "owen-it/laravel-auditing": "^8.0",
+        "owenmelbz/laravel-pwa-manifest": "^0.0.3",
         "rtconner/laravel-tagging": "~2.2",
         "yajra/laravel-datatables-oracle": "~8.0",
         "zendframework/zend-feed": "^2.10"

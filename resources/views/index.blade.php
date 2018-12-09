@@ -9,6 +9,11 @@
 
     <link rel="stylesheet" type="text/css" href="/css/app.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="theme-color" content="#323436">
+
+    @pwaManifest
+    
   </head>
   <body>
     <noscript>

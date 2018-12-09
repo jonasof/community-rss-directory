@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="210mm"
+   viewBox="0 0 210 210"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="429.8683"
+     inkscape:cy="541.55114"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g4563"
+     showgrid="false"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0"
+     inkscape:window-width="1148"
+     inkscape:window-height="995"
+     inkscape:window-x="60"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4558" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-87)">
+    <g
+       id="g4563"
+       transform="translate(-0.94494048,-0.23623512)">
+      <path
+         style="fill:#333333;fill-opacity:1;stroke:none;stroke-width:3.88260508"
+         id="path18"
+         d="m 68.448369,151.67247 c 1.627041,6.14652 6.472297,10.59581 10.878129,14.88059 8.281403,8.21136 18.034502,14.65372 27.686892,21.10357 11.83569,7.98435 23.02113,16.8587 34.23227,25.68096 6.3215,5.14 3.24982,2.63185 9.21662,7.52269 0,0 -16.51192,10.31508 -16.51192,10.31508 v 0 c -5.77494,-4.98519 -2.77863,-2.44784 -8.99773,-7.60164 -11.03798,-8.94625 -22.15586,-17.82589 -34.098485,-25.55652 -9.888809,-6.40494 -19.738774,-13.01605 -28.351217,-21.10606 -4.849674,-4.58751 -9.756284,-9.24062 -12.216538,-15.60374 0,0 18.161979,-9.63493 18.161979,-9.63493 z"
+         inkscape:connector-curvature="0" />
+      <g
+         id="g4636">
+        <ellipse
+           style="fill:#323436;fill-opacity:1;stroke:none;stroke-width:3.93180084"
+           id="path16"
+           cx="105.95957"
+           cy="192.27327"
+           rx="104.97279"
+           ry="104.94675" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:129.86412048px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:3.24660277px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="12.601367"
+           y="227.53175"
+           id="text22"><tspan
+             sodipodi:role="line"
+             id="tspan20"
+             x="12.601367"
+             y="227.53175"
+             style="fill:#ffffff;stroke-width:3.24660277px">rss</tspan></text>
+        <text
+           id="text4567"
+           y="257.95233"
+           x="50.632629"
+           style="font-style:normal;font-weight:normal;font-size:24.53501892px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.61337554px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             style="fill:#ffffff;stroke-width:0.61337554px"
+             y="257.95233"
+             x="50.632629"
+             id="tspan4565"
+             sodipodi:role="line">directory</tspan></text>
+        <text
+           id="text4589"
+           y="140.11534"
+           x="49.760822"
+           style="font-style:normal;font-weight:normal;font-size:19.86693001px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.49667332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             style="fill:#ffffff;stroke-width:0.49667332px"
+             y="140.11534"
+             x="49.760822"
+             id="tspan4587"
+             sodipodi:role="line">Community</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

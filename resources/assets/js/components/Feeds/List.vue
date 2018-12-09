@@ -12,6 +12,7 @@
       :opts="datatables.options"
       class-name="table table-striped table-bordered w-100"
       @preview="preview"
+      @openFeed="openFeed"
     )
     previewModal(ref='preview')
 
@@ -66,11 +67,22 @@
           fields: this.getColumns()
         };
       },
+      getColumns() {
+        return ListColumns(this.$i18n);
+      },
       preview (data) {
         this.$refs.preview.show(`/api/feeds/${data.id}/download`);
       },
-      getColumns() {
-        return ListColumns(this.$i18n);
+      openFeed (data) {
+        if (navigator.share) {
+          navigator.share({
+            title: data.title,
+            text: data.description,
+            url: data.url
+          }).catch(() => window.open(data.url,'_blank'));
+        } else {
+          window.open(data.url,'_blank');
+        }
       }
     },
     watch: {
