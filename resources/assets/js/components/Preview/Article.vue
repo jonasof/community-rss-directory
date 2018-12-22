@@ -28,7 +28,7 @@
     font-size: 20px;
   }
 
-  /deep/ img {
+  article /deep/ img {
     max-width: 100%;
   }
 </style>

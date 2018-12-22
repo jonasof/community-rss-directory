@@ -19,3 +19,4 @@ _ide_helper_models.php
 manifest.yml
 .bp-config
 .cf-ignore
+coverage

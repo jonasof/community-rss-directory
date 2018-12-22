@@ -8,10 +8,8 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "postinstall": "npm run prod"
-    },
-    "devDependencies": {
-        "cross-env": "^5.1"
+        "postinstall": "npm run prod",
+        "test": "jest --coverage"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.8",
@@ -24,17 +22,59 @@
         "datatables.net-responsive-bs4": "^2.2.3",
         "jquery": "^3.2",
         "jquery.uls": "^0.1.0",
-        "laravel-mix": "^2.1.14",
+        "laravel-mix": "^4.0.6",
         "lodash": "^4.17.4",
         "popper.js": "^1.14.4",
         "pug": "^2.0.3",
         "pug-plain-loader": "^1.0.0",
         "rss-parser": "^3.5.3",
         "vee-validate": "^2.0.9",
-        "vue": "^2.5.17",
+        "vue": "^2.5.21",
         "vue-datatables-net": "^1.0.1",
-        "vue-i18n": "^8.3.2",
+        "vue-i18n": "^8.4.0",
         "vue-router": "^3.0.2",
+        "vue-template-compiler": "^2.5.21",
         "vuelidate": "^0.7.4"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.2.0",
+        "@vue/test-utils": "^1.0.0-beta.25",
+        "axios-mock-adapter": "^1.15.0",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-jest": "^v24.0.0-alpha.9",
+        "cross-env": "^5.1",
+        "jest": "^v24.0.0-alpha.9",
+        "node-sass": "^4.11.0",
+        "resolve-url-loader": "^2.3.1",
+        "sass-loader": "^7.1.0",
+        "vue-jest": "^3.0.1"
+    },
+    "jest": {
+        "testRegex": "/*.spec.js$",
+        "roots": [
+            "<rootDir>/resources/assets/js/",
+            "<rootDir>/tests/Frontend/"
+        ],
+        "moduleFileExtensions": [
+            "js",
+            "json",
+            "vue"
+        ],
+        "moduleDirectories": [
+            "node_modules",
+            "resources/assets/js",
+            "tests/Frontend"
+        ],
+        "moduleNameMapper": {
+            "^vue$": "<rootDir>/node_modules/vue/dist/vue.common.js",
+            "^@voerro/vue-tagsinput": "<rootDir>/node_modules/@voerro/vue-tagsinput/dist/voerro-vue-tagsinput.js"
+        },
+        "setupFiles": [
+            "<rootDir>/tests/Frontend/setup.js"
+        ],
+        "transform": {
+            "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+            "^.+\\.vue$": "<rootDir>/node_modules/vue-jest"
+        }
     }
 }

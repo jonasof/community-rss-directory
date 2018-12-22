@@ -5,12 +5,6 @@
 </template>
 
 <script>
-  import 'jquery.uls/src/jquery.uls.data.js'
-  import 'jquery.uls/src/jquery.uls.data.utils.js'
-  import 'jquery.uls/src/jquery.uls.lcd.js'
-  import 'jquery.uls/src/jquery.uls.languagefilter.js'
-  import 'jquery.uls/src/jquery.uls.core.js'
-
   export default {
     data () {
       return {
@@ -31,8 +25,6 @@
     methods: {
       setupCurrentLanguage () {
         const storedLanguage = localStorage.getItem('language')
-
-        console.log(storedLanguage)
 
         if (storedLanguage) {
           return storedLanguage;

@@ -1,18 +1,20 @@
 require('./bootstrap');
+
+import Vue from "vue";
+window.Vue = Vue
+
 import VueRouter from 'vue-router'
 import VeeValidate from 'vee-validate'
 import VueI18n from 'vue-i18n'
 
-import messages from './Messages'
-import locale from './locale'
-
 import List from './components/Feeds/List.vue'
 import Form from './components/Feeds/Form.vue'
 
-window.Vue = require('vue');
 Vue.use(VueI18n)
 Vue.use(VueRouter)
 Vue.use(VeeValidate, { fieldsBagName: 'veeFields' })
+
+Vue.prototype.$axios = window.axios;
 
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faLink, faPen, faEye, faSpinner, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
@@ -24,8 +26,11 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.filter("localdatetime", date => date ? (new Date(date)).toLocaleString() : "");
 Vue.filter("localdate", date => date ? (new Date(date)).toLocaleDateString() : "");
 
-Vue.component('appheader', require('./components/Header.vue'));
-Vue.component('appfooter', require('./components/Footer.vue'));
+import appheader from './components/Header.vue'
+import appfooter from './components/Footer.vue'
+
+Vue.component('appheader', appheader);
+Vue.component('appfooter', appfooter);
 
 const router = new VueRouter({
   routes: [
@@ -46,7 +51,10 @@ const router = new VueRouter({
   ]
 })
 
-const i18n = new VueI18n({
+import messages from './Messages'
+import locale from './locale'
+
+let i18n = new VueI18n({
   messages,
   locale: locale.getCurrentLocale(),
   fallbackLocale: 'en'

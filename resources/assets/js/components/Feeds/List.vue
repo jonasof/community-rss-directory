@@ -15,7 +15,6 @@
       @openFeed="openFeed"
     )
     previewModal(ref='preview')
-
 </template>
 
 <script>
@@ -101,25 +100,20 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  .vdtnet-container {
-    width: 100% !important;
-  }
+<style lang="sass" scoped>
+  .vdtnet-container
+    width: 100% !important
 
-  .vdtnet-container /deep/ .action {
-    white-space: nowrap;
-    letter-spacing: 18px;
+  .vdtnet-container /deep/ .action
+    white-space: nowrap
+    letter-spacing: 18px
 
-    a {
-      font-size: 18px;
-    }
-  }
+    a
+      font-size: 18px
 
-  .vdtnet-container /deep/ .online {
-    color: green;
-  }
+  .vdtnet-container /deep/ .online
+    color: green
 
-  .vdtnet-container /deep/ .offline {
-    color: red;
-  }
+  .vdtnet-container /deep/ .offline
+    color: red
 </style>

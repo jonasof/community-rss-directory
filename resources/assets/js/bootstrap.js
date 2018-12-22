@@ -1,13 +1,18 @@
-
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
 window.$ = window.jQuery = require('jquery');
 
+require('jquery.uls/src/jquery.uls.data.js')
+require('jquery.uls/src/jquery.uls.data.utils.js')
+require('jquery.uls/src/jquery.uls.lcd.js')
+require('jquery.uls/src/jquery.uls.languagefilter.js')
+require('jquery.uls/src/jquery.uls.core.js')
+
 require('bootstrap');
 
 require('datatables.net');
-require('datatables.net-bs4');
+window.Datatables = require('datatables.net-bs4');
 require('datatables.net-responsive-bs4');
 
 /**
@@ -26,13 +31,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+let token = window.CSRF_TOKEN || document.head.querySelector('meta[name="csrf-token"]');
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token ? token.content : '';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

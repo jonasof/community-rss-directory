@@ -95,26 +95,30 @@
     },
     async mounted () {
       if (this.id) {
-        let response = await axios.get(`/api/feeds/${this.id}`, this.form);
+        let response = await this.$axios.get(`/api/feeds/${this.id}`, this.form);
         this.form = response.data;
       }
     },
     methods: {
       async submit() {
         try {
-          await axios({
+          await this.$axios({
             method: this.id ? 'put' : 'post',
             url: this.id ? `/api/feeds/${this.id}` : '/api/feeds',
             data: this.form
           });
-          this.$router.push('/');
         } catch (e) {
-          if (!e.response.data.errors) return
+          if (!e.response.data.errors) return false;
 
           for (let [key, value] of Object.entries(e.response.data.errors)) {
             this.$validator.errors.add(key, value.join(', '));
           }
+
+          return false;
         }
+        this.$router.push('/');
+
+        return true;
       },
       async fetchFeedInformation () {
         if (!(await this.$validator.validate('url'))) {
@@ -122,7 +126,7 @@
         }
 
         try {
-          const result = await axios.get('/api/feeds/parse', {
+          const result = await this.$axios.get('/api/feeds/parse', {
             params: {
               url: this.form.url
             }
@@ -142,5 +146,5 @@
 </script>
 
 <style scoped lang="sass">
-    @import '~@voerro/vue-tagsinput/dist/style.css';
+    @import '~@voerro/vue-tagsinput/dist/style.css'
 </style>
