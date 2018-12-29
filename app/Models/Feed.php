@@ -19,7 +19,8 @@ class Feed extends Model implements Auditable
         'description',
         'tags',
         'homepage',
-        'type'
+        'type',
+        'icon_url'
     ];
 
     protected $appends = [

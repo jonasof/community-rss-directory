@@ -23,7 +23,8 @@ class StoreFeedRequest extends FormRequest
                 Rule::unique('feeds')->ignore($this->id)
             ],
             'title' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'icon_url' => 'url'
         ];
     }
 }

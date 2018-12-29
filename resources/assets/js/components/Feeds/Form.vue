@@ -61,6 +61,17 @@
       .invalid-feedback {{ errors.first('description') }}
 
     .form-group
+      label(for="icon_url") {{ $t('feeds.fields.icon_url') }}:
+      input.form-control(
+        id="icon_url"
+        name="icon_url"
+        v-model="form.icon_url"
+        v-validate="'url'"
+        v-bind:class="{ 'is-invalid': errors.has('icon_url') }"
+      )
+      .invalid-feedback {{ errors.first('icon_url') }}
+
+    .form-group
       label(for="tags") {{ $t('feeds.fields.tags') }}:
       tags-input(
         element-id="tags"
@@ -88,7 +99,8 @@
           homepage: "",
           description: "",
           tags: "",
-          type: ""
+          type: "",
+          icon_url: ""
         },
         valid_url: false
       }

@@ -8,7 +8,8 @@ export default {
       type: 'Type',
       homepage: 'Homepage',
       url: 'URL/Link',
-      tags: 'Tags'
+      tags: 'Tags',
+      icon_url: 'Icon URL'
     },
     types: {
       all: 'All',

@@ -1,6 +1,14 @@
 export default (i18n) => ({
+  icon_url: {
+    label: ' ',
+    searchable: false,
+    sortable: false,
+    render: (data) => {
+      return data ? `<img src='${data}' width='24' height='24' referrerpolicy='no-referrer' />` : ``
+    }
+  },
   title: {
-    label: i18n.t('feeds.columns.title')
+    label: i18n.t('feeds.columns.title'),
   },
   tagged: {
     label: i18n.t('feeds.columns.tags'),
