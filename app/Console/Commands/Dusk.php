@@ -2,11 +2,16 @@
 
 namespace App\Console\Commands;
 
-use Laravel\Dusk\Console\DuskCommand;
 use Symfony\Component\Process\Process;
+use Illuminate\Console\Command;
+use Artisan;
 
-class Dusk extends DuskCommand
+class Dusk extends Command
 {
+    protected $signature = 'test:browser';
+
+    protected $description = 'Run the Dusk tests for the application';
+
     protected $process;
 
     /**
@@ -18,7 +23,7 @@ class Dusk extends DuskCommand
     {
         $this->prepareServer();
 
-        $result = parent::handle();
+        $result = Artisan::call('dusk');
 
         $this->killServer();
 
