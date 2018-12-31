@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-cat /etc/passwd
-
 file_meta=($(ls -lnd /app/Dockerfile))
 
 export USER_ID="${file_meta[2]}"

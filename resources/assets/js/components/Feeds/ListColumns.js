@@ -54,7 +54,7 @@ export default (i18n) => ({
     template: `<div class="action">
       <a title="${i18n.t('feeds.actions.preview')}" href="javascript:void(0);" data-action="preview"><font-awesome-icon icon="eye" /></a>
       <a title="${i18n.t('feeds.actions.link')}" href="javascript:void(0);" data-action="openFeed"><font-awesome-icon icon="link" /></a>
-      <a title="${i18n.t('feeds.actions.edit')}" :href='"#/edit/" + row.id'><font-awesome-icon icon="pen" /></a>
+      <a title="${i18n.t('feeds.actions.edit')}" class='edit' :href='"#/edit/" + row.id'><font-awesome-icon icon="pen" /></a>
     </div>`
   }
 })

@@ -8,13 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#/">{{ $t('feeds.actions.homepage') }}</a>
+              <a class="nav-link homepage" href="#/">{{ $t('feeds.actions.homepage') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/new">{{ $t('feeds.actions.new') }}</a>
+              <a class="nav-link new" href="#/new">{{ $t('feeds.actions.new') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/api/feeds/export" download>{{ $t('feeds.actions.export') }}</a>
+              <a class="nav-link export" href="/api/feeds/export" download>{{ $t('feeds.actions.export') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
