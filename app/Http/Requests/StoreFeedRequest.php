@@ -24,7 +24,7 @@ class StoreFeedRequest extends FormRequest
             ],
             'title' => 'required',
             'type' => 'required',
-            'icon_url' => 'url'
+            'icon_url' => 'nullable|url'
         ];
     }
 }
