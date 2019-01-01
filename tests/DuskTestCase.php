@@ -6,10 +6,18 @@ use Laravel\Dusk\TestCase as BaseTestCase;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Artisan;
 
 abstract class DuskTestCase extends BaseTestCase
 {
     use CreatesApplication;
+
+    protected function tearDown()
+    {
+        Artisan::call('migrate:refresh');
+
+        parent::tearDown();
+    }
 
     /**
      * Prepare for Dusk test execution.

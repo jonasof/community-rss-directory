@@ -10,13 +10,13 @@ export default (i18n) => ({
   title: {
     label: i18n.t('feeds.columns.title'),
   },
-  tagged: {
+  tags: {
     label: i18n.t('feeds.columns.tags'),
     searchable: false,
     sortable: false,
     render: (data) => data.map(
       (tag) => {
-        return `<a href='#/?tag=${tag.tag_slug}'>${tag.tag_slug}</a>`
+        return `<a href='#/?tag=${tag}'>${tag}</a>`
       }
     ).join(', ')
   },

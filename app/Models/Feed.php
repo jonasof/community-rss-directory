@@ -24,7 +24,8 @@ class Feed extends Model implements Auditable
     ];
 
     protected $appends = [
-        'status'
+        'status',
+        'tags'
     ];
 
     public function statuses()
@@ -35,6 +36,13 @@ class Feed extends Model implements Auditable
     public function lastStatus()
     {
         return $this->hasOne(FeedStatus::class)->orderBy('id', 'desc');
+    }
+
+    public function getTagsAttribute()
+    {
+        return $this->tagged->map(function($item){
+            return $item->tag->slug ?? '';
+        })->filter();
     }
 
     public function setTagsAttribute($tags)
@@ -55,12 +63,9 @@ class Feed extends Model implements Auditable
 
     public static function getSearchQuery($tag)
     {
-        $query = self::query()->with(['tagged']);
-
-        if ($tag) {
-            $query->withAnyTag($tag);
-        }
-
-        return $query;
+        return self::query()
+            ->when($tag, function($query) {
+                return $query->withAnyTag($tag);
+            });
     }
 }
