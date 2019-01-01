@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Feed;
 
 use Tests\TestCase;
 
-class FeedTest extends TestCase
+class CreateTest extends TestCase
 {
     public function testCreateValidFeed()
     {

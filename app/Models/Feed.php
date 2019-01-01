@@ -61,11 +61,10 @@ class Feed extends Model implements Auditable
         return $this->lastStatus->online ?? true;
     }
 
-    public static function getSearchQuery($tag)
+    public function scopeWithTags($query, $tag = null)
     {
-        return self::query()
-            ->when($tag, function($query) {
-                return $query->withAnyTag($tag);
-            });
+        return $query->when($tag, function($query) use ($tag) {
+            return $query->withAnyTag($tag);
+        });
     }
 }

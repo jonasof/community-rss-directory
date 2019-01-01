@@ -12,7 +12,7 @@ class FeedController extends Controller
 {
     public function index(Request $request)
     {
-        return datatables()->of(Feed::getSearchQuery($request->tag))->toJson();
+        return datatables()->of(Feed::withTags($request->tag))->toJson();
     }
 
     public function store(StoreFeedRequest $request)

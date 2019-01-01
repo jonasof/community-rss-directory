@@ -41,4 +41,23 @@ class FeedsTest extends TestCase
 
         $this->assertEquals(false, $feed->status);
     }
+
+    public function testFilterByTagsReturnByTag()
+    {
+        factory(Feed::class)->create(['tags' => []]);
+        $feedWithTag = factory(Feed::class)->create(['tags' => ['example']]);
+
+        $query = Feed::withTags(['example']);
+
+        $this->assertEquals(1, $query->count());
+        $this->assertEquals($feedWithTag->id, $query->first()->id);
+    }
+
+    public function testFilterByTagsIgnoreEmptiness()
+    {
+        factory(Feed::class)->create(['tags' => []]);
+        factory(Feed::class)->create(['tags' => ['example']]);
+
+        $this->assertEquals(2, Feed::withTags()->count());
+    }
 }
