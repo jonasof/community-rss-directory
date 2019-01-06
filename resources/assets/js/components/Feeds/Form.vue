@@ -14,6 +14,9 @@
       )
       .invalid-feedback {{ errors.first('url') }}
 
+    marquee(v-if='url_is_loading')
+      | {{ $t('loading') }}...
+
     .form-group
       label(for="url") {{ $t('feeds.fields.type') }}:
       select.form-control(
@@ -21,8 +24,8 @@
         name="type"
         v-validate="'required'"
         v-model="form.type"
-        @blur='fetchFeedInformation()'
         v-bind:class="{ 'is-invalid': errors.has('type') }"
+        :readonly='url_is_loading'
       )
         option(value="rss") Text RSS
         option(value="podcast") Podcast
@@ -36,6 +39,7 @@
         v-model="form.homepage"
         v-validate="'url'"
         v-bind:class="{ 'is-invalid': errors.has('homepage') }"
+        :readonly='url_is_loading'
       )
       .invalid-feedback {{ errors.first('homepage') }}
 
@@ -47,6 +51,7 @@
         v-model="form.title"
         v-validate="'required'"
         v-bind:class="{ 'is-invalid': errors.has('title') }"
+        :readonly='url_is_loading'
       )
       .invalid-feedback {{ errors.first('title') }}
 
@@ -57,6 +62,7 @@
         name="description"
         v-model="form.description"
         v-bind:class="{ 'is-invalid': errors.has('description') }"
+        :readonly='url_is_loading'
       )
       .invalid-feedback {{ errors.first('description') }}
 
@@ -68,6 +74,7 @@
         v-model="form.icon_url"
         v-validate="'url'"
         v-bind:class="{ 'is-invalid': errors.has('icon_url') }"
+        :readonly='url_is_loading'
       )
       .invalid-feedback {{ errors.first('icon_url') }}
 
@@ -78,9 +85,10 @@
         v-model="form.tags"
         :typeahead="false"
         placeholder=""
+        :readonly='url_is_loading'
       )
 
-    button.btn.btn-primary(href='', @click.prevent="submit", :disabled="errors.any()") {{ $t('feeds.actions.save') }}
+    button.btn.btn-primary(href='', @click.prevent="submit", :readonly="errors.any()") {{ $t('feeds.actions.save') }}
 </template>
 
 <script>
@@ -102,7 +110,9 @@
           type: "",
           icon_url: ""
         },
-        valid_url: false
+        valid_url: false,
+        url_is_loading: false,
+        url_changed: false
       }
     },
     async mounted () {
@@ -137,6 +147,12 @@
           return
         }
 
+        if (!this.url_changed) {
+          return;
+        }
+
+        this.url_is_loading = true;
+
         try {
           const result = await this.$axios.get('/api/feeds/parse', {
             params: {
@@ -152,6 +168,14 @@
         } catch (e) {
           this.errors.add('url', this.$t('feeds.errors.invalid_source'));
         }
+
+        this.url_is_loading = false;
+        this.url_changed = false;
+      }
+    },
+    watch: {
+      'form.url' (url) {
+        this.url_changed = true
       }
     }
   }
@@ -159,4 +183,7 @@
 
 <style scoped lang="sass">
     @import '~@voerro/vue-tagsinput/dist/style.css'
+
+    marquee
+      width: 200px
 </style>

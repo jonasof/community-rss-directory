@@ -45,5 +45,6 @@ export default {
   datatables: {
     previous: 'Anterior',
     next: 'Próxima'
-  }
+  },
+  loading: 'Carregando'
 }
