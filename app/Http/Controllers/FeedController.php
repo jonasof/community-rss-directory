@@ -49,11 +49,16 @@ class FeedController extends Controller
         }
     }
 
-    public function export()
+    public function export(Request $request)
     {
-        return response()->streamDownload(function () {
+        $feeds = datatables()->of(Feed::withTags($request->tag))
+            ->skipPaging()
+            ->getFilteredQuery()
+            ->get();
+
+        return response()->streamDownload(function () use ($feeds) {
             $exporter = new Exporter();
-            echo $exporter->export(Feed::all());
+            echo $exporter->export($feeds);
         }, 'response.opml');
     }
 

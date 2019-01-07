@@ -14,9 +14,6 @@
               <a class="nav-link new" href="#/new">{{ $t('feeds.actions.new') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link export" href="/api/feeds/export" download>{{ $t('feeds.actions.export') }}</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link">
                 <LanguageSelector></languageselector>
               </a>

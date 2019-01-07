@@ -14,6 +14,10 @@
       @preview="preview"
       @openFeed="openFeed"
     )
+    p.text-right
+      a.btn.btn-secondary.export.btn-sm(@click="exportTable", href='javascript:void(0)')
+        | {{ $t('feeds.actions.export_opml') }}
+
     previewModal(ref='preview')
 </template>
 
@@ -82,6 +86,14 @@
         } else {
           window.open(data.url,'_blank');
         }
+      },
+      exportTable () {
+        window.location.href = this.getExportTableUrl();
+      },
+      getExportTableUrl () {
+        const params = this.$refs.table.dataTable.ajax.params();
+
+        return "/api/feeds/export?" + $.param(params);
       }
     },
     watch: {
@@ -116,4 +128,8 @@
 
   .vdtnet-container /deep/ .offline
     color: red
+
+  a.export
+    color: blank
+
 </style>

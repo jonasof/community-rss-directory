@@ -29,7 +29,7 @@ export default {
     actions: {
       homepage: 'Homepage',
       new: 'New Feed',
-      export: 'Export',
+      export_opml: 'Export OPML',
       save: 'Save',
       preview: 'Preview',
       link: 'Feed Link',
