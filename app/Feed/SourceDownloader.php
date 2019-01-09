@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Utils;
+namespace App\Feed;
 
 use \GuzzleHttp\Client;
 
-class FeedSourceDownloader
+class SourceDownloader
 {
     public function download(string $url): string
     {

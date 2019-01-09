@@ -2,9 +2,6 @@
 
 use Faker\Generator as Faker;
 
-use App\Models\Feed;
-use App\Models\FeedStatus;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -16,15 +13,8 @@ use App\Models\FeedStatus;
 |
 */
 
-$factory->define(Feed::class, function (Faker $faker) {
+$factory->define(App\Models\FeedStatus::class, function (Faker $faker) {
     return [
-        'title' => $faker->sentence,
-        'url' => $faker->url,
-        'homepage' => $faker->url,
-        'type' => collect(['rss', 'podcast'])->random()
+        'online' => true
     ];
-});
-
-$factory->afterMaking(Feed::class, function (Feed $feed) {
-    $feed->statuses->add(factory(FeedStatus::class)->make());
 });

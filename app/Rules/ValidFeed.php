@@ -4,13 +4,13 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-use App\Utils\FeedValidator;
+use App\Feed\Validator;
 
 class ValidFeed implements Rule
 {
     public function passes($attribute, $value)
     {
-        return FeedValidator::isValidFeedSource($value);
+        return Validator::isValidFeedSource($value);
     }
 
     public function message()

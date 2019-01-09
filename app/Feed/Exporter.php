@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utils;
+namespace App\Feed;
 
 use Celd\Opml\Importer as CeldExporter;
 use Celd\Opml\Model\FeedList;

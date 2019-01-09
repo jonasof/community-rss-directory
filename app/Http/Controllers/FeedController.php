@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Feed;
 use App\Http\Requests\StoreFeedRequest;
-use App\Utils\{FeedSource, Exporter};
+use App\Feeds\{Source, Exporter};
 use Cache;
 
 class FeedController extends Controller
@@ -40,7 +40,7 @@ class FeedController extends Controller
     public function parse(Request $request)
     {
         try {
-            $feedMeta = (new FeedSource($request->url))->getFeedMeta();
+            $feedMeta = (new Source($request->url))->getFeedMeta();
             return response()->json($feedMeta);
         } catch (\Exception $e) {
             return response()->json([
@@ -69,7 +69,7 @@ class FeedController extends Controller
         $minutes = 10;
 
         return Cache::remember("feed_$id", $minutes, function () use ($feed) {
-            return (new FeedSource($feed->url))->download();
+            return (new Source($feed->url))->download();
         });
     }
 }

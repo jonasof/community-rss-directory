@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Feed;
-use App\Utils\FeedValidator;
+use App\Feed\Validator;
 
 class CheckFeedStatus extends Command
 {
@@ -16,7 +16,7 @@ class CheckFeedStatus extends Command
     {
         $feed = Feed::find($this->argument('id'));
         $feed->statuses()->create([
-            'online' => FeedValidator::isValidFeedSource($feed->url)
+            'online' => Validator::isValidFeedSource($feed->url)
         ]);
     }
 }

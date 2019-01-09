@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utils;
+namespace App\Feed;
 
 use Zend\Feed\Reader\Reader;
 use GuzzleHttp\Exception\RequestException;
@@ -8,7 +8,7 @@ use Zend\Feed\Reader\Exception\RuntimeException;
 use Zend\Feed\Reader\Feed\AbstractFeed;
 use App\Helpers\Http;
 
-class FeedSource
+class Source
 {
     public $url;
 
@@ -22,16 +22,16 @@ class FeedSource
         return Reader::importString($this->download());
     }
 
-    function getFeedMeta(): FeedMeta
+    function getFeedMeta(): Meta
     {
         $imported = $this->import();
 
-        return new FeedMeta([
+        return new Meta([
             'url' => $this->url,
             'title' => $imported->getTitle(),
             'homepage' => $imported->getLink(),
             'description' => $imported->getDescription(),
-            'type' => (new FeedTypeResolver($imported))->getType(),
+            'type' => (new TypeResolver($imported))->getType(),
             'image_url' => $this->getImageUrl($imported),
             'icon_url' => $this->getIconUrl($imported)
         ]);
@@ -49,7 +49,7 @@ class FeedSource
 
     function download(): string
     {
-        return app(FeedSourceDownloader::class)->download($this->url);
+        return app(SourceDownloader::class)->download($this->url);
     }
 
     protected function getImageUrl(AbstractFeed $feed) : ?string

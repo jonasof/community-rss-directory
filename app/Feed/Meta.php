@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Utils;
+namespace App\Feed;
 
-class FeedMeta
+class Meta
 {
     public function __construct($params)
     {

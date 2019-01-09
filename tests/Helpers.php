@@ -2,37 +2,37 @@
 
 namespace Tests;
 
-use App\Utils\FeedSourceDownloader;
+use App\Feed\SourceDownloader;
 
 trait Helpers
 {
     function mockValidFeedSource ()
     {
-        $mockedDownloader = $this->createMock(FeedSourceDownloader::class);
+        $mockedDownloader = $this->createMock(SourceDownloader::class);
         $mockedDownloader
             ->method('download')
             ->willReturn(file_get_contents(base_path('tests/Fixtures/Sources/Valid/folha.xml')));
 
-        app()->instance(FeedSourceDownloader::class, $mockedDownloader);
+        app()->instance(SourceDownloader::class, $mockedDownloader);
     }
 
     function mockValidPodcastFeedSource ()
     {
-        $mockedDownloader = $this->createMock(FeedSourceDownloader::class);
+        $mockedDownloader = $this->createMock(SourceDownloader::class);
         $mockedDownloader
             ->method('download')
             ->willReturn(file_get_contents(base_path('tests/Fixtures/Sources/Valid/podcast-nbw.xml')));
 
-        app()->instance(FeedSourceDownloader::class, $mockedDownloader);
+        app()->instance(SourceDownloader::class, $mockedDownloader);
     }
 
     function mockInvalidFeedSource ()
     {
-        $mockedDownloader = $this->createMock(FeedSourceDownloader::class);
+        $mockedDownloader = $this->createMock(SourceDownloader::class);
         $mockedDownloader
             ->method('download')
             ->willReturn(file_get_contents(base_path('tests/Fixtures/Sources/Invalid/duckduckgo.html')));
 
-        app()->instance(FeedSourceDownloader::class, $mockedDownloader);
+        app()->instance(SourceDownloader::class, $mockedDownloader);
     }
 }

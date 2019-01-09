@@ -4,21 +4,21 @@ namespace Tests\Unit\Util;
 
 use Tests\TestCase;
 
-use App\Utils\{FeedSource};
+use App\Feed\{Source};
 
-class FeedSourceTest extends TestCase
+class SourceTest extends TestCase
 {
     public function testSourceIsPodcastType()
     {
         $this->mockValidPodcastFeedSource();
 
-        $this->assertEquals((new FeedSource('mocked'))->getFeedMeta()->type, 'podcast');
+        $this->assertEquals((new Source('mocked'))->getFeedMeta()->type, 'podcast');
     }
 
     public function testSourceIsRssType()
     {
         $this->mockValidFeedSource();
 
-        $this->assertEquals((new FeedSource('mocked'))->getFeedMeta()->type, 'rss');
+        $this->assertEquals((new Source('mocked'))->getFeedMeta()->type, 'rss');
     }
 }

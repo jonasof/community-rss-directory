@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Utils;
+namespace App\Feed;
 
 use Zend\Feed\Reader\Feed\AbstractFeed;
 
-class FeedTypeResolver
+class TypeResolver
 {
     public function __construct(AbstractFeed $feedSource)
     {
