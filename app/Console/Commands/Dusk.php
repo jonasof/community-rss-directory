@@ -23,7 +23,9 @@ class Dusk extends Command
     {
         $this->prepareServer();
 
-        $result = Artisan::call('dusk');
+        $result = Artisan::call('dusk', [
+            '--env' => 'dusk'
+        ]);
 
         $this->killServer();
 
@@ -37,8 +39,7 @@ class Dusk extends Command
      */
     protected function prepareServer()
     {
-        shell_exec('echo "" > /tmp/dusk.sqlite');
-        shell_exec('php artisan migrate --env dusk');
+        echo shell_exec('echo "" > /tmp/dusk.sqlite');
 
         chdir(public_path());
 

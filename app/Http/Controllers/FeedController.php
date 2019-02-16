@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Feed;
 use App\Http\Requests\StoreFeedRequest;
-use App\Feeds\{Source, Exporter};
+use App\Feed\{Source, Exporter};
 use Cache;
 
 class FeedController extends Controller

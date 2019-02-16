@@ -12,11 +12,11 @@ abstract class DuskTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    protected function tearDown()
+    protected function setUp()
     {
-        Artisan::call('migrate:refresh');
+        parent::setUp();
 
-        parent::tearDown();
+        Artisan::call('migrate:refresh');
     }
 
     /**
