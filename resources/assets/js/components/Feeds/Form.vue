@@ -1,7 +1,8 @@
 <template lang="pug">
   div
     h2 {{ $t('feeds.new') }}
-    p.alert.alert-warning {{ $t('ip_registered') }}
+    slot(name="ip-track-alert")
+      p.alert.alert-warning {{ $t('ip_registered') }}
     .form-group
       label(for="url") {{ $t('feeds.fields.url') }}:
       input.form-control(
@@ -98,53 +99,47 @@
 
   export default {
     components: { TagsInput },
-    props: ['id'],
+    props: [
+      'form'
+    ],
+    model: {
+      prop: 'form'
+    },
     data () {
       return {
-        form: {
-          title: "",
-          url: "",
-          homepage: "",
-          description: "",
-          tags: "",
-          type: "",
-          icon_url: ""
-        },
         valid_url: false,
         url_is_loading: false,
         url_changed: false
-      }
-    },
-    async mounted () {
-      if (this.id) {
-        let response = await this.$axios.get(`/api/feeds/${this.id}`, this.form);
-        this.form = response.data;
-      }
+      };
     },
     methods: {
       async submit() {
         try {
           await this.$axios({
-            method: this.id ? 'put' : 'post',
-            url: this.id ? `/api/feeds/${this.id}` : '/api/feeds',
+            method: this.form.id ? 'put' : 'post',
+            url: this.form.id ? `/api/feeds/${this.form.id}` : '/api/feeds',
             data: this.form
           });
         } catch (e) {
           if (!e.response.data.errors) return false;
 
           for (let [key, value] of Object.entries(e.response.data.errors)) {
-            this.$validator.errors.add(key, value.join(', '));
+            this.$validator.errors.add({
+              field: key,
+              msg: value.join(', ')
+            });
           }
 
           return false;
         }
-        this.$router.push('/');
+
+        this.$emit('saved');
 
         return true;
       },
       async fetchFeedInformation () {
         if (!(await this.$validator.validate('url'))) {
-          return
+          return;
         }
 
         if (!this.url_changed) {
@@ -166,7 +161,10 @@
 
           this.errors.remove('url');
         } catch (e) {
-          this.errors.add('url', this.$t('feeds.errors.invalid_source'));
+          this.errors.add({
+            field: 'url',
+            msg: this.$t('feeds.errors.invalid_source')
+          });
         }
 
         this.url_is_loading = false;

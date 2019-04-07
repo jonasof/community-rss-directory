@@ -8,7 +8,8 @@ import VeeValidate from 'vee-validate'
 import VueI18n from 'vue-i18n'
 
 import List from './components/Feeds/List.vue'
-import Form from './components/Feeds/Form.vue'
+import FormPage from './pages/Feeds/Form.vue'
+import Importer from './components/Feeds/Importer.vue'
 
 Vue.use(VueI18n)
 Vue.use(VueRouter)
@@ -41,11 +42,15 @@ const router = new VueRouter({
     },
     {
       path: '/new',
-      component: Form
+      component: FormPage
+    },
+    {
+      path: '/import',
+      component: Importer
     },
     {
       path: '/edit/:id',
-      component: Form,
+      component: FormPage,
       props: true
     }
   ]

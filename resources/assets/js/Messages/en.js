@@ -2,6 +2,7 @@ export default {
   feeds: {
     new: 'New Feed Source',
     list: 'Feed List',
+    import_opml: "Import OPML",
     fields: {
       title: 'Title',
       description: 'Description',
@@ -9,7 +10,8 @@ export default {
       homepage: 'Homepage',
       url: 'URL/Link',
       tags: 'Tags',
-      icon_url: 'Icon URL'
+      icon_url: 'Icon URL',
+      file: "OPML File"
     },
     types: {
       all: 'All',
@@ -29,8 +31,10 @@ export default {
     actions: {
       homepage: 'Homepage',
       new: 'New Feed',
+      import_opml: 'Import OPML',
       export_opml: 'Export OPML',
       save: 'Save',
+      'continue': 'Continue',
       preview: 'Preview',
       link: 'Feed Link',
       edit: 'Edit'

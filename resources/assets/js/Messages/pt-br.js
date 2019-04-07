@@ -2,6 +2,7 @@ export default {
   feeds: {
     new: 'Novo Feed',
     list: 'Lista de Feeds',
+    import_opml: "Importar OPML",
     fields: {
       title: 'Título',
       description: 'Descrição',
@@ -9,7 +10,8 @@ export default {
       homepage: 'Pàgina Inicial',
       url: 'URL/Link',
       tags: 'Etiquetas',
-      icon_url: "URL/Link do Ícone"
+      icon_url: "URL/Link do Ícone",
+      file: "Arquivo OPML"
     },
     types: {
       all: 'Todos',
@@ -29,8 +31,10 @@ export default {
     actions: {
       homepage: 'Página Inicial',
       new: 'Novo Feed',
+      import_opml: 'Importar OPML',
       export_opml: 'Exportar OPML',
       save: 'Salvar',
+      'continue': 'Continuar',
       preview: 'Pré-Visualizar',
       link: 'Ligação do Feed',
       edit: 'Editar'

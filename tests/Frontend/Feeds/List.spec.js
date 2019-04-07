@@ -6,11 +6,17 @@ import i18n from 'setup/i18n'
 let wrapper = null
 beforeEach(() => {
   wrapper = mount(ListComponent, {
-    i18n
+    i18n,
+    sync: false
   })
-})
+});
 
-test('should build url for exoort', () => {
+afterEach(() => {
+  wrapper.destroy();
+  window.mockedAxios.reset();
+});
+
+test('should build url for export', () => {
   const searchUrl = wrapper.vm.getExportTableUrl();
 
   expect(searchUrl).toMatch(/\/api\/feeds\/export\?/)

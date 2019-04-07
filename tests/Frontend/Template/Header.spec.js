@@ -5,6 +5,7 @@ import i18n from 'setup/i18n'
 
 test('should mount without crashing', () => {
   const wrapper = mount(HeaderTest, {
-    i18n
+    i18n,
+    sync: false
   })
 })

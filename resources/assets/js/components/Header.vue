@@ -11,6 +11,9 @@
               <a class="nav-link homepage" href="#/">{{ $t('feeds.actions.homepage') }}</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link import" href="#/import">{{ $t('feeds.actions.import_opml') }}</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link new" href="#/new">{{ $t('feeds.actions.new') }}</a>
             </li>
             <li class="nav-item">

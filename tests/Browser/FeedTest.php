@@ -46,7 +46,7 @@ class ListTest extends DuskTestCase
                 ->waitForText('G1')
                 ->click('.edit')
                 ->waitUntil("$('#description').val().includes('Últimas notícias de economia')")
-                ->type('title', ' Editado')
+                ->type('title', 'G1 Editado')
                 ->click('.btn')
                 ->waitForText('Feed List');
 
@@ -82,7 +82,7 @@ class ListTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser
                 ->visit('/')
-                ->waitForText('Feed List')
+                ->waitForText('G1')
                 ->click('.edit')
                 ->waitUntil("$('#description').val().includes('Últimas notícias de economia')")
                 ->assertInputValue('tags', 'tagteste')
