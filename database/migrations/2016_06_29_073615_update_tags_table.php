@@ -18,6 +18,8 @@ class UpdateTagsTable extends Migration {
 
 	public function down()
 	{
+		if (DB::getDriverName() === "sqlite") return;
+
 		Schema::table('tagging_tags', function ($table) {
 			$table->dropForeign('tagging_tags_tag_group_id_foreign');
 			$table->dropColumn('tag_group_id');

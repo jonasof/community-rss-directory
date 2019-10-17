@@ -7,21 +7,24 @@
     "repositories": [{
         "type": "vcs",
         "url": "https://github.com/jonasof/opml-feeds"
+    }, {
+        "type": "vcs",
+        "url": "https://github.com/jonasof/laravel-pwa-manifest"
     }],
     "require": {
-        "php": "^7.1.3",
+        "php": "^7.2.0",
         "ext-gd": "*",
         "amphp/parallel": "^1.0",
         "celd/opml-import-export": "dev-update-dependencies",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel/framework": "5.6.*",
+        "laravel/framework": "^6.0.0",
         "laravel/tinker": "^1.0",
-        "owen-it/laravel-auditing": "^8.0",
-        "owenmelbz/laravel-pwa-manifest": "^0.0.3",
-        "rtconner/laravel-tagging": "~2.2",
-        "yajra/laravel-datatables-oracle": "~8.0",
+        "owen-it/laravel-auditing": "^9.3.2",
+        "rtconner/laravel-tagging": "^3.2.3",
+        "owenmelbz/laravel-pwa-manifest": "dev-allow-laravel-6",
+        "yajra/laravel-datatables-oracle": "~9.7.0",
         "zendframework/zend-feed": "^2.10"
     },
     "require-dev": {
@@ -29,10 +32,10 @@
         "beyondcode/laravel-er-diagram-generator": "^1.2",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
-        "laravel/dusk": "^4.0",
+        "laravel/dusk": "^5.0",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0"
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "classmap": [

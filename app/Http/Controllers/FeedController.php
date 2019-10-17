@@ -66,9 +66,9 @@ class FeedController extends Controller
     {
         $feed = Feed::findOrFail($id);
 
-        $minutes = 10;
+        $seconds = 10 * 60;
 
-        return Cache::remember("feed_$id", $minutes, function () use ($feed) {
+        return Cache::remember("feed_$id", $seconds, function () use ($feed) {
             return (new Source($feed->url))->download();
         });
     }

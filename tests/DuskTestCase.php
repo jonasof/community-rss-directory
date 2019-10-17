@@ -12,7 +12,7 @@ abstract class DuskTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
