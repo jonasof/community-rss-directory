@@ -3,6 +3,9 @@ language: php
 php:
   - 7.2
 
+services:
+  - xvfb
+
 before_script:
   - cp .env.example .env
   - composer self-update
@@ -11,7 +14,9 @@ before_script:
   - nvm install 10
   - nvm use 10
   - npm install
+  - export DISPLAY=:99.0
 
 script:
   - vendor/bin/phpunit
   - npm run test
+  - php artisan dusk
