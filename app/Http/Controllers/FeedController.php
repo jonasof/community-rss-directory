@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Feed;
+use App\Models\{Feed};
 use App\Http\Requests\StoreFeedRequest;
-use App\Feed\{Source, Exporter};
+use App\Feed\{Source, Exporter, Datatables};
 use Cache;
 
 class FeedController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, Datatables $datatables)
     {
-        return datatables()->of(Feed::withTags($request->tag))->toJson();
+        return $datatables->getHomepage($request)->toJson();
     }
 
     public function store(StoreFeedRequest $request)
@@ -49,10 +49,10 @@ class FeedController extends Controller
         }
     }
 
-    public function export(Request $request)
+    public function export(Request $request, Datatables $datatables)
     {
-        $feeds = datatables()->of(Feed::withTags($request->tag))
-            ->skipPaging()
+        $feeds = $datatables
+            ->getExport($request)
             ->getFilteredQuery()
             ->get();
 

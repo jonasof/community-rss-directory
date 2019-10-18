@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Fico7489\Laravel\EloquentJoin\Traits\EloquentJoin;
 use OwenIt\Auditing\Contracts\Auditable;
-
 use Conner\Tagging\Taggable;
 
 class Feed extends Model implements Auditable
 {
+    use EloquentJoin;
     use Taggable;
     use \OwenIt\Auditing\Auditable;
 
